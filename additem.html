@@ -1,3 +1,4 @@
+<!-- David Magee, VFW 0512-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,6 +12,9 @@
     	<script type="text/javascript" src="#"></script>
 	</head>
 	<body>
+		<header>
+			<h1>SciFi Your Mates</h1>
+		</header>
 		<form action="#" method="post">
 			<fieldset>
 				<legend>Mate's Info</legend>
@@ -41,7 +45,48 @@
 								</optgroup>
 							</select>
 						</li>
+						<li>
+							<label for="skills">Skills</label>
+							<select id="skills">
+								<optgroup label="Fighting Skills">
+									<option value="Swordsman">Swordsman</option>
+									<option value="Smasher">Smasher</option>
+									<option value="Boxer">Boxer</option>
+								</optgroup>
+								<optgroup label="Shooting Skills">
+									<option value="Gunner">Gunner</option>
+									<option value="Sniper">Sniper</option>
+									<option value="Tank">Tank</option>
+								</optgroup>
+								<optgroup label="Thieving Skills">
+									<option value="Thief">Thief</option>
+									<option value="Charmer">Charmer</option>
+									<option value="Assassin">Assassin</option>
+								</optgroup>
+								<optgroup label="Sorcery Skills">
+									<option value="Mage">Mage</option>
+									<option value="Wizard">Wizard</option>
+									<option value="Shaman">Shaman</option>
+								</optgroup>
+								<optgroup label="Techster Skills">
+									<option value="Hacker">Hacker</option>
+									<option value="Biotic">Biotic</option>
+									<option value="Anarchist">Anarchist</option>
+								</optgroup>
+							</select>
+						</li>
 					</ul>
+			</fieldset>
+			<fieldset>
+				<legend>Morality and Character</legend>
+					<ul>
+						<li><label for="morality">Morality</label><input type="range" name="morality" min="1" max="10" />
+						<li><label for="character">Character</label><input type="range" name="character" min="1" max="10" />
+					</ul>
+			</fieldset>
+			<fieldset>
+				<legend>Biography</legend>
+					<li><label for="bio">Bio</label><textarea id="bio">Type your mate's bio here...</textarea></li>
 			</fieldset>
 		</form>
 	</body>
