@@ -1,7 +1,7 @@
-<!-- David Magee, VFW 0512-->
 <!DOCTYPE html>
+<!-- David Magee, VFW 0512-->
 <html>
-	<head>
+	<head> <!-- Meta tags-->
     	<meta charset="utf-8" />
     	<meta name="description" content="First document." />
     	<meta name="keywords" content="mobile development" />
@@ -12,26 +12,26 @@
     	<script type="text/javascript" src="#"></script>
 	</head>
 	<body>
-		<header>
+		<header> <!--Header with h1 -->
 			<h1>SciFi Your Mates</h1>
 		</header>
-		<form action="#" method="post">
-			<fieldset>
-				<legend>Mate's Info</legend>
+		<form action="#" method="post"><!--Form -->
+			<fieldset><!--Fieldset -->
+				<legend>Mate's Info</legend><!--Legend -->
 					<ul>
-						<li><label for="name">Name</label><input type="text" id="name" /></li>
+						<li><label for="name">Name</label><input type="text" id="name" /></li> <!--Text field -->
 						<li>Gender
-							<ul>
+							<ul> <!--Radio -->
 								<li><input type="radio" checked value="Female" id="female" name="gender" /><label for="female">Female</label></li>	
 								<li><input type="radio" value="Male" id="male" name="gender" /><label for="male">Male</label></li>
 								<li><input type="radio" value="Other" id="other" name="gender" /><label for="other">Other</label></li>
 								<li><input type="radio" value="None" id="none" name="gender" /><label for="none">None</label></li>
 							</ul>
 						</li>
-						<li><label for="born">Born</label><input type="date" name="born" /></li>
+						<li><label for="born">Born</label><input type="date" name="born" /></li> <!--Date -->
 						<li>
 							<label for="homeplanet">Home Planet</label>
-							<select id="homeplanet">
+							<select id="homeplanet"><!--Select and Options -->
 								<optgroup label="Allied Planets">
 									<option value="Mars">Mars</option>
 									<option value="Earth">Earth</option>
@@ -79,15 +79,18 @@
 			</fieldset>
 			<fieldset>
 				<legend>Morality and Character</legend>
-					<ul>
+					<ul><!--Range -->
 						<li><label for="morality">Morality</label><input type="range" name="morality" min="1" max="10" />
 						<li><label for="character">Character</label><input type="range" name="character" min="1" max="10" />
 					</ul>
 			</fieldset>
 			<fieldset>
-				<legend>Biography</legend>
+				<legend>Biography</legend><!--Text Area -->
 					<li><label for="bio">Bio</label><textarea id="bio">Type your mate's bio here...</textarea></li>
-			</fieldset>
+					<input type="hidden" value="true" />
+			</fieldset><!--Clear and Submit data -->
+			<a href="#"><input type="submit" value ="Press Me" /></a>
+			<a href="#"><input type="submit" value ="Clear Data" /></a>
 		</form>
 	</body>
 </html> 
