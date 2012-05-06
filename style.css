@@ -1,0 +1,46 @@
+/* David Magee, VFW 0512*/
+
+body {
+	background-color: #D8D8D8;
+}
+
+h1 {
+	margin: 10px 15px;
+	padding: 15px 5px;
+	border: 3px outset black;
+	color: white;
+	font-family: Trebuchet MS, Tahoma, Geneva;
+	font-size: 40px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: .01em;
+	background-color: #006699;
+}
+
+p { 
+	margin: 10px 15px;
+	padding: 15px 5px;
+	border: 3px outset black;
+	color: white;
+	text-align: center;
+	font-family: Tahoma, Geneva, Georgia;
+	background-color: #0099CC;
+}
+
+fieldset {
+	color: white;
+	margin: 10px 15px;
+	padding: 15px 5px;
+	border: 3px outset black;
+	background-color: #0099CC;
+	
+}
+
+label {
+	display: block;
+}
+
+legend {
+	font-size: 30px;
+	color: black;
+}
