@@ -9,11 +9,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		return theElement;
 	};
 	
-	var homePlanets = [ "Home Planet". "Mars", "Earth", "Pluto", "Vegas", "Turos", 
+	var homePlanets = [ "Home Planet", "Mars", "Earth", "Pluto", "Vegas", "Turos", 
 		"Heisinkr", "Velarius"];
 		
-	var displayLink $('displaydata');
-	displayLink.addEventListener()
+	var displayLink = $('displaydata');
+	displayLink.addEventListener("click", getData);
+	var clearLink = $('cleardata');
+	clearLink.addEventListener("click", clearData);
+	var saveLink = $('savedata');
+	saveLink.addEventListener("click", saveData);
 
 
 
