@@ -48,6 +48,24 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSkills);
 	};
 	
+
+//listed below are the variables and calls for above functions
+	//Planets Array
+	var homePlanets = ["Allied Planets", "Mars", "Earth", "Pluto", "Vegas", 
+	"Relkin Group", "Turos", "Heisinkr", "Velarius"];
+	
+	//calls to functions
+	listPlanets();
+	
+	//Skills Array
+	var skillOptions = ["Fighting Skills", "Swordsman", "Smasher", "Boxer", 
+	"Shooting Skills", "Gunner", "Sniper", "Tank", "Thieving Skills", "Thief", 
+	"Charmer", "Assassin", "Sorcery Skills", "Mage", "Wizard", "Shaman", 
+	"Techster Skills", "Hacker", "Biotic", "Anarchist" ];
+	
+	//call to listskills function
+	listSkills();	
+	
 	
 	
 	// Store Data Function 
@@ -100,27 +118,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		//Save data into local storage: use Stringify to convert our object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Profile Saved!");
-		
-		
-	
 	}
 	
-	//listed below are the variables and calls for above functions
-	//Planets Array
-	var homePlanets = ["Allied Planets", "Mars", "Earth", "Pluto", "Vegas", 
-	"Relkin Group", "Turos", "Heisinkr", "Velarius"];
 	
-	//calls to functions
-	listPlanets();
 	
-	//Skills Array
-	var skillOptions = ["Fighting Skills", "Swordsman", "Smasher", "Boxer", 
-	"Shooting Skills", "Gunner", "Sniper", "Tank", "Thieving Skills", "Thief", 
-	"Charmer", "Assassin", "Sorcery Skills", "Mage", "Wizard", "Shaman", 
-	"Techster Skills", "Hacker", "Biotic", "Anarchist" ];
 	
-	//call to listskills function
-	listSkills();
 	
 	//Button Presses	
 	var displayLink = $('displaydata');
@@ -131,8 +133,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	saveLink.addEventListener("click", saveData);
 
 
-	//calls to functions
-	listPlanets();
+	
 
 
 
