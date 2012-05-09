@@ -83,7 +83,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				genderValue = selected[i].value;
 			}
 		}
-	}
+	};
 	
 	/* This is an example of if a check boxed was checked.  Note the if and else.
 	function getGenderValue(){
@@ -105,7 +105,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var id 					= Math.floor(Math.random()*10000000001);
 		//this retrieves and gathers our form values and store in object.
 		//Object properties contain array with the form label and input values.
-		getGender();
+		
 		var item				= {};
 		item.planet				= ["Home Planets: ", $('homeplanets').value];
 		item.skill				= ["Skill: ", $('theskills').value];
@@ -121,8 +121,31 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
+	getGender();
 	
-	
+	//Get data function. Writes the data saved to the browser. 
+	function getData(){
+		var createDiv = document.createElement('div');
+		createDiv.setAttribute("id", "info");
+		var makeList = document.createElement('ul');
+		createDiv.appendChild(makeList);
+		document.body.appendChild(createDiv);
+		for(i=0, j=localStorage.length; i<j; i++){
+			var makeli = document.createElement('li');
+			makeList.appendChild(makeli);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var object = JSON.parse(value); //This converts string data back to object
+			var sublist = document.createElement('ul');
+			makeli.appendChild(sublist);
+			for(var n in object){
+				var listItems = document.createElement('li');
+				sublist.appendChild(listItems);
+				var subText = object[n][0] +" "+object[n][1];
+				sublist.innerHTML = subtext;
+			}
+		}
+	};
 	
 	//Button Presses	
 	var displayLink = $('displaydata');
