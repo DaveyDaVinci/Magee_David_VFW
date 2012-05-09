@@ -101,12 +101,34 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Had to return the value as a variable to be used outside function
 	var genderValue;
 	
+	function toggleControls(n){
+			switch(n){
+				case "on":
+					$('profileForm').style.display = "none"; //NEED PROPER TAG
+					$('cleardata').style.display = "inline"; //NEED PROPER TAG
+					$('displaydata').style.display = "none";
+					$('newdata').style.display = "inline";
+					break; 
+				case "off":
+					$('profileForm').style.display = "block";
+					$('cleardata').style.display = "inline"; 
+					$('displaydata').style.display = "inline";
+					$('newdata').style.display = "none";
+					$('info').style.display = "none";
+					break;
+				default:
+					return false;
+			}
+	}
+	
+	
 	function saveData(){
 		var id 					= Math.floor(Math.random()*10000000001);
 		//this retrieves and gathers our form values and store in object.
 		//Object properties contain array with the form label and input values.
 		
 		var item				= {};
+		getGender();
 		item.planet				= ["Home Planets: ", $('homeplanets').value];
 		item.skill				= ["Skill: ", $('theskills').value];
 		item.name				= ["Name: ", $('name').value];
@@ -121,15 +143,20 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-	getGender();
+	
 	
 	//Get data function. Writes the data saved to the browser. 
 	function getData(){
+		toggleControls('on');
+		if(localStorage.length === 0){
+			alert("Nothing is stored in local storage.")
+		};
 		var createDiv = document.createElement('div');
 		createDiv.setAttribute("id", "info");
 		var makeList = document.createElement('ul');
 		createDiv.appendChild(makeList);
 		document.body.appendChild(createDiv);
+		$('info').style.display = "display";
 		for(i=0, j=localStorage.length; i<j; i++){
 			var makeli = document.createElement('li');
 			makeList.appendChild(makeli);
@@ -146,6 +173,17 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 	};
+	
+	function clearData(){
+		if(localStorage.length === 0){
+			alert("You haven't entered anything, mate.")
+		} else {
+			localStorage.clear();
+			alert("All profiles have been deleted.");
+			window.location.reload();
+			return false;
+		}
+	}
 	
 	//Button Presses	
 	var displayLink = $('displaydata');
