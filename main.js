@@ -51,17 +51,17 @@ window.addEventListener("DOMContentLoaded", function(){
 
 //listed below are the variables and calls for above functions
 	//Planets Array
-	var homePlanets = ["Allied Planets", "Mars", "Earth", "Pluto", "Vegas", 
-	"Relkin Group", "Turos", "Heisinkr", "Velarius"];
+	var homePlanets = ["~~Allied Planets~~", "Mars", "Earth", "Pluto", "Vegas", 
+	"~~Relkin Group~~", "Turos", "Heisinkr", "Velarius"];
 	
 	//calls to functions
 	listPlanets();
 	
 	//Skills Array
-	var skillOptions = ["Fighting Skills", "Swordsman", "Smasher", "Boxer", 
-	"Shooting Skills", "Gunner", "Sniper", "Tank", "Thieving Skills", "Thief", 
-	"Charmer", "Assassin", "Sorcery Skills", "Mage", "Wizard", "Shaman", 
-	"Techster Skills", "Hacker", "Biotic", "Anarchist" ];
+	var skillOptions = ["~~Fighting Skills~~", "Swordsman", "Smasher", "Boxer", 
+	"~~Shooting Skills~~", "Gunner", "Sniper", "Tank", "~~Thieving Skills~~", "Thief", 
+	"Charmer", "Assassin", "~~Sorcery Skills~~", "Mage", "Wizard", "Shaman", 
+	"~~Techster Skills~~", "Hacker", "Biotic", "Anarchist" ];
 	
 	//call to listskills function
 	listSkills();	
@@ -162,7 +162,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				var listItems = document.createElement('li');
 				sublist.appendChild(listItems);
 				var subText = object[n][0] +" "+object[n][1];
-				sublist.innerHTML = subText;
+				listItems.innerHTML = subText;
 			}
 		}
 	};
@@ -185,11 +185,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	clearLink.addEventListener("click", clearData);
 	var saveLink =  $('savedata');
 	saveLink.addEventListener("click", saveData);
-
-
-	
-
-
 
 });
 
