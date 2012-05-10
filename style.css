@@ -13,6 +13,7 @@ h1 {
 	font-size: 40px;
 	text-align: center;
 	text-transform: uppercase;
+	text-shadow: black 0.1em 0.1em 0.2em;
 	letter-spacing: .01em;
 	background-color: #006699;
 }
@@ -33,6 +34,7 @@ fieldset {
 	padding: 15px 5px;
 	border: 3px outset black;
 	background-color: #0099CC;
+	text-shadow: black 0.1em 0.1em 0.2em;
 	
 }
 
@@ -41,11 +43,21 @@ label {
 }
 
 legend {
+	padding: 0px 5px;
+	border: 1px solid black;
 	font-size: 30px;
 	color: black;
+	background-color: #F0F0F0;
+	text-shadow: white 0.05em 0.05em 0.2em;
 }
 
 a{
 	text-decoration: none;
+	a:visited {color:#00FF00;}
+}
+
+li {
+    font-size: 20px;
+    list-style-type: georgian;
 }
 
