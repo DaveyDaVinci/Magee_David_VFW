@@ -66,14 +66,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	//call to listskills function
 	listSkills();	
 	
-	
-	
-	// Store Data Function 
-	/* 
-	function saveData(){
-		localStorage.setItem("", "");
-	}
-	*/
+
 	
 	// find value of the gender button
 	function getGender(){
@@ -123,7 +116,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 	function saveData(){
-		var id 					= Math.floor(Math.random()*10000000001);
+		var id 					= Math.floor(Math.random()*10000001);
 		//this retrieves and gathers our form values and store in object.
 		//Object properties contain array with the form label and input values.
 		
@@ -136,7 +129,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		item.morality			= ["Morality: ", $('morality').value];
 		item.character			= ["Character: ", $('character').value];
 		item.bio				= ["Bio: ", $('bio').value];
-		item.gender				= ["Gender", genderValue ];
+		item.gender				= ["Gender: ", genderValue ];
 		//Save data into local storage: use Stringify to convert our object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Profile Saved!");
@@ -169,7 +162,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				var listItems = document.createElement('li');
 				sublist.appendChild(listItems);
 				var subText = object[n][0] +" "+object[n][1];
-				sublist.innerHTML = subtext;
+				sublist.innerHTML = subText;
 			}
 		}
 	};
