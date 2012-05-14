@@ -29,9 +29,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	};
 	
 	
-	
-	
-	
 	//Adds options for skills
 	
 	function listSkills (){
@@ -119,13 +116,18 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-	function saveData(){
-		var id 					= Math.floor(Math.random()*10000001);
+	function saveData(key){
+		//If there is no key, its' a brand new item and we create a random key
+		if(!key){
+			var id 				= Math.floor(Math.random()*10000001);
+		}else{
+			//Sets the id to existing key to override data	
+			id = key;
+		}
 		//this retrieves and gathers our form values and store in object.
 		//Object properties contain array with the form label and input values.
-		
-		var item				= {};
 		getGender();
+		var item				= {};
 		item.planet				= ["Home Planet: ", $('homeplanets').value];
 		item.skill				= ["Skill: ", $('theskills').value];
 		item.name				= ["Name: ", $('name').value];
@@ -324,7 +326,9 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		} else {
 			//Returns store data if validates
-			storeData();
+			//this key value was passed through editsubmit as a property
+			storeData(this.key);
+			//sends the key value which came from editdata function.
 		}
 	}
 		
