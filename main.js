@@ -64,6 +64,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	"Charmer", "Assassin", "~~Sorcery Skills~~", "Mage", "Wizard", "Shaman", 
 	"~~Techster Skills~~", "Hacker", "Biotic", "Anarchist" ];
 	
+	
+	//variable for errors shortcut below
+	var  errMsg = $('errors');
 	//call to listskills function
 	listSkills();	
 	
@@ -123,7 +126,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 		var item				= {};
 		getGender();
-		item.planet				= ["Home Planets: ", $('homeplanets').value];
+		item.planet				= ["Home Planet: ", $('homeplanets').value];
 		item.skill				= ["Skill: ", $('theskills').value];
 		item.name				= ["Name: ", $('name').value];
 		item.born				= ["Born: ", $('born').value];
@@ -206,13 +209,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		//populate form fields with current localStorage values
 		
 		//THESE TOP TWO VALUES ARE RETURNING UNDEFINED
-		$('homeplanets').value = item.homeplanet[1];
-		$('theskills').value = item.theskill[1];
+		$('homeplanets').value = item.planet[1];
+		$('theskills').value = item.skill[1];
 		$('name').value = item.name[1];
 		$('born').value = item.born[1];
 		$('morality').value = item.morality[1];
 		$('character').value = item.character[1];
-	
+		$('bio').value = item.bio[1];
 		var radios = document.forms[0].gender;
 			for (var i=0; i<radios.length; i++){
 				if(radios[i].value == "Male" && item.gender[1] == "Male"){
@@ -224,6 +227,17 @@ window.addEventListener("DOMContentLoaded", function(){
 				} else if (radios[i].value == "None" && item.gender[1] == "None"){
 					radios[i].setAttribute("checked", "checked");
 				}
+		
+		//Removes the initial listener from the save contact button so it won't make a new group
+		saveLink.removeEventListener("click", saveData);
+		//Then we want to change the submit button value to edit button
+		$('savedata').value = "Edit Profile";
+		var editSubmit = $('submit');
+		// Saves the key, value pair established in the function as a property of the edit submit event
+		// so we can use that value when we save the data we edited. 
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
+		
 		}
 		/* Checks for checkbox
 		if(obj.favorite[1] == "Yes" {
@@ -244,13 +258,84 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	//This is a function that validates data in form fields
+	function validate(e){
+		//define the elements we want to check
+		var getPlanet =     $('homeplanets');
+		var getSkills =		$('theskills');
+		var getName =     	$('name');
+		var getBorn =		$('born');
+		var getMorality = 	$('morality');
+		var getCharacter = 	$('character');
+		var getBio = 		$('bio');
+		var getGender = 	$(genderValue);
+		
+		errMsg.innerHTML = "";
+		getPlanet.style.border = "1px solid black";
+		getSkills.style.border = "1px solid black";
+		getName.style.border = "1px solid black";
+		getBio.style.border = "1px solid black";
+
+		
+		//Error message 
+		var errorAry = [];
+		//Checks for validation
+		if(getPlanet.value === "~~Allied Planets~~" || getPlanet.value === "~~Relkin Group~~"){
+			var planetError = "Please choose a home planet.";
+			getPlanet.style.border = "1px solid red";
+			errorAry.push(planetError);
+		}
+		if( getSkills.value === "~~Fighting Skills~~" || getSkills.value === "~~Thieving Skills~~"  
+		|| getSkills.value === "~~Shooting Skills~~" || getSkills.value === "~~Sorcery Skills~~"  
+		|| getSkills.value === "~~Techster Skills~~"){
+			var skillError = "Please choose a skill.";
+			getSkills.style.border = "1px solid red";
+			errorAry.push(skillError);
+		}
+		
+		if(getName.value === ""){
+			var nameError = "Please enter a name.";
+			getName.style.border = "1px solid red";
+			errorAry.push(nameError);
+		}
+		
+		if(getBio.value === "" || getBio.value === "Type your mate's bio here..."){
+			var bioError = "Please enter a bio.";
+			getBio.style.border = "1px solid red";
+			errorAry.push(bioError);
+		}
+		
+		/* email validation which I won't use
+		var re = /^\w+([\.-]?\w+)*@\w+([\.-]?/w+)*(\.\w{2,3})+$/;
+		if (!(re.exec.getEmail.value)){
+			var emailError = "Please enter a valid email address.";
+			itemKey.style.border = "1px solid red";
+			errorAry.push(emailError);
+			*/
+		
+		//Display errors on screen
+		if (errorAry.length >= 1){
+			for(var i=0, j=errorAry.length; i < j; i++){
+				var txt = document.createElement('li');
+				txt.innerHTML = errorAry[i];
+				errMsg.appendChild(txt);
+			} 
+			e.preventDefault();
+			return false;
+		} else {
+			//Returns store data if validates
+			storeData();
+		}
+	}
+		
+	
 	//Button Presses	
-	var displayLink = $('displaydata');
+	var displayLink = $('displaydata'); 
 	displayLink.addEventListener("click", getData);
 	var clearLink = $('cleardata');
 	clearLink.addEventListener("click", clearData);
 	var saveLink =  $('savedata');
-	saveLink.addEventListener("click", saveData);
+	saveLink.addEventListener("click", validate); /* saveData*/
 
 });
 
