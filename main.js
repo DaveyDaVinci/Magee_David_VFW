@@ -181,14 +181,57 @@ window.addEventListener("DOMContentLoaded", function(){
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 		
+		//break line to separate links
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+		
+		//this makes a delete item link
 		var deleteLink = document.createElement('a');
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Information";
-		deleteLink.addEventListening("click", deleteItem);
+		//deleteLink.addEventListening("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
+	
+	function editItem(){
+		//grabs data from local storage
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		//Shows form
+		toggleControls("off");
+		
+		//populate form fields with current localStorage values
+		
+		//THESE TOP TWO VALUES ARE RETURNING UNDEFINED
+		$('homeplanets').value = item.homeplanet[1];
+		$('theskills').value = item.theskill[1];
+		$('name').value = item.name[1];
+		$('born').value = item.born[1];
+		$('morality').value = item.morality[1];
+		$('character').value = item.character[1];
+	
+		var radios = document.forms[0].gender;
+			for (var i=0; i<radios.length; i++){
+				if(radios[i].value == "Male" && item.gender[1] == "Male"){
+					radios[i].setAttribute("checked", "checked");
+				} else if (radios[i].value == "Female" && item.gender[1] == "Female"){
+					radios[i].setAttribute("checked", "checked");
+				} else if (radios[i].value == "Other" && item.gender[1] == "Other"){
+					radios[i].setAttribute("checked", "checked");
+				} else if (radios[i].value == "None" && item.gender[1] == "None"){
+					radios[i].setAttribute("checked", "checked");
+				}
+		}
+		/* Checks for checkbox
+		if(obj.favorite[1] == "Yes" {
+			$('fav').setAttribute("checked", checked");
+		}
+		*/
+		
+		}
 	
 	function clearData(){
 		if(localStorage.length === 0){
