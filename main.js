@@ -1,6 +1,7 @@
 /*
 David Magee
 VFW 0512
+Project 3
 */
 
 window.addEventListener("DOMContentLoaded", function(){
@@ -152,6 +153,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('info').style.display = "display";
 		for(i=0, j=localStorage.length; i<j; i++){
 			var makeli = document.createElement('li');
+			var linksLi = document.createElement('li');
 			makeList.appendChild(makeli);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -163,7 +165,9 @@ window.addEventListener("DOMContentLoaded", function(){
 				sublist.appendChild(listItems);
 				var subText = object[n][0] +" "+object[n][1];
 				listItems.innerHTML = subText;
+				sublist.appendChild(linksLi);
 			}
+			createItemLinks(); //This creates the buttons for each item in the storage.
 		}
 	};
 	
