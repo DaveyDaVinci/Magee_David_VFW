@@ -167,9 +167,28 @@ window.addEventListener("DOMContentLoaded", function(){
 				listItems.innerHTML = subText;
 				sublist.appendChild(linksLi);
 			}
-			createItemLinks(); //This creates the buttons for each item in the storage.
+			createItemLinks(localStorage.key(i), linksLi); //This creates the buttons for each item in the storage.
 		}
 	};
+	
+	//create the edit and delete links for the displayed data
+	function createItemLinks(key, linksLi){ //this key is called from the function up above
+		var editLink = document.createElement('a');
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Information";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		
+		var deleteLink = document.createElement('a');
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Information";
+		deleteLink.addEventListening("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+	}
 	
 	function clearData(){
 		if(localStorage.length === 0){
