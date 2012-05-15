@@ -234,7 +234,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		saveLink.removeEventListener("click", saveData);
 		//Then we want to change the submit button value to edit button
 		$('savedata').value = "Edit Profile";
-		var editSubmit = $('submit');
+		var editSubmit = $('savedata');
 		// Saves the key, value pair established in the function as a property of the edit submit event
 		// so we can use that value when we save the data we edited. 
 		editSubmit.addEventListener("click", validate);
