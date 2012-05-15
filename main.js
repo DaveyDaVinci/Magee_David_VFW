@@ -195,7 +195,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Information";
-		//deleteLink.addEventListening("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -248,6 +248,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		*/
 		
 		}
+	
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this profile?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			alert("Profile has been purged.");
+			window.location.reload();
+		} else {
+			alert("Profile was spared from deletion.")
+		}
+	}
 	
 	function clearData(){
 		if(localStorage.length === 0){
@@ -327,7 +338,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		} else {
 			//Returns store data if validates
 			//this key value was passed through editsubmit as a property
-			storeData(this.key);
+			saveData(this.key);
 			//sends the key value which came from editdata function.
 		}
 	}
@@ -339,7 +350,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = $('cleardata');
 	clearLink.addEventListener("click", clearData);
 	var saveLink =  $('savedata');
-	saveLink.addEventListener("click", validate); /* saveData*/
+	saveLink.addEventListener("click", validate); 
 
 });
 
